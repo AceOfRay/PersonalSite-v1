@@ -1,0 +1,25 @@
+
+.list {
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    height:8vh;
+}
+
+.listObject {
+    list-style: none;
+    cursor: pointer;
+    padding:1svh;
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    transition:transform 0.5s ease;
+}
+
+.listObject:hover {
+    transform: scale(1.3)
+}
+
+.nav {
+    background-color: black;
+
+}

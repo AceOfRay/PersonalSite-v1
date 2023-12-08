@@ -1,0 +1,39 @@
+
+
+
+.headerContainer {
+    display: flex;
+    justify-content: left;
+    background-color:rgba(0, 0, 0, .5);
+    background-image: url("/public/DeskSetup.jpg");
+    background-blend-mode: multiply;
+    overflow: hidden;
+    height: 90vh;
+  }
+
+
+.aboutBar {
+    color:white;
+    padding:5vh 25vw;
+}
+
+
+.aboutBar > * {
+    padding: 2vh 2vh;
+}
+
+.main {
+  height:auto;
+  display: flex;
+  flex-direction: column; /* Default is 'column', change to 'row' */
+  justify-content: flex-start; /* Align items to the start (left) */
+  align-items: flex-start;
+}
+
+.helloTitle, .myDescription, .welcome, .introPara {
+  transition: transform 0.5s ease;
+}
+
+.helloTitle:hover, .myDescription:hover, .welcome:hover, .introPara:hover {
+  transform: scale(1.3)
+}
