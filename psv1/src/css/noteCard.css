@@ -1,0 +1,28 @@
+
+.card {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow-y:hidden;
+    border:1px solid white;
+    transform: translateY(0);
+    transition: transform 1s ease;
+    max-height:21vh;
+    margin:3vh;
+    text-overflow:ellipsis;
+    backdrop-filter: blur(5px);
+}
+
+.card > * {
+    margin:1svh;
+    color:#fff
+}
+
+.card:hover {
+    transform: translateY(-7vh); 
+    cursor:pointer;
+}
+
+p {
+    font-size:large;
+}

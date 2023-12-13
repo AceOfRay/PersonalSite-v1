@@ -37,3 +37,9 @@
 .helloTitle:hover, .myDescription:hover, .welcome:hover, .introPara:hover {
   transform: scale(1.3)
 }
+
+.noteCardContainer {
+  display: flex;
+  justify-content: space-around;
+  padding:5vh 5vh;
+}
