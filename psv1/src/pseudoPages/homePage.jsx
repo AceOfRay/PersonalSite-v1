@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NoteCard from "../components/noteCard";
 import "../css/homepage.css";
-import LargeCard from "../components/largeCard";
+import Modal from "../components/modal";
 
 const HomePage = () => {
   const sectionArray = [
@@ -36,11 +36,11 @@ const HomePage = () => {
   ];
 
   const [notecards, setNoteCards] = useState([]);
-  const [largeCard, setLargeCard] = useState(false);
+  const [modal, setModal] = useState(false);
   const [index, setCardIndex] = useState(0);
 
-  const closeLargeCard = () => {
-    setLargeCard(false);
+  const closeModal = () => {
+    setModal(false);
   };
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const HomePage = () => {
         paragraph={note.sentence}
         onClick={() => {
           setCardIndex(index);
-          setLargeCard(!largeCard);
+          setModal(!modal);
         }} // why does this line not get run on click
       />
     ));
@@ -73,13 +73,15 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-      <div className="noteCardContainer">{notecards}</div>
-      <LargeCard
+      <Modal
         title={sectionArray[index].title}
         paragraph={sectionArray[index].paragraph}
-        isOpen={largeCard}
-        onClose={closeLargeCard}
-      ></LargeCard>
+        isOpen={modal}
+        onClose={closeModal}
+        className={modal}
+      ></Modal>
+      <div className="noteCardContainer">{notecards}</div>
+      
     </main>
   );
 };
