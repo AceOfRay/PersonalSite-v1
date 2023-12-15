@@ -14,7 +14,7 @@
 }
 
 .softwareContainer > * {
-    margin:1vw 10vw;
+    margin:1vw 5vw;
     padding:1vh 2.5vw;
     border:2px solid white;
 }
@@ -31,4 +31,33 @@
     padding:1vh 2.5vw;
     border:2px solid white;
 
+}
+
+.softwareSection, .clubSection, .hardwareSection {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom:10vh;
+    width:100%;
+}
+
+.sectionTitle {
+    padding:.5vh;
+    margin: 1.5vh;
+    font-size:5vh;
+    border-bottom:2px solid white;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sectionTitle:hover {
+    transform: scale(1.1);
+}
+
+
+.spinContainer {
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NoteCard from "../components/noteCard";
 import "../css/homepage.css";
 import Modal from "../components/modal";
+import LoadingSpinner from "../components/loadingSpinner";
 
 const HomePage = () => {
   const sectionArray = [
@@ -38,12 +39,14 @@ const HomePage = () => {
   const [notecards, setNoteCards] = useState([]);
   const [modal, setModal] = useState(false);
   const [index, setCardIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const closeModal = () => {
     setModal(false);
   };
 
   useEffect(() => {
+    setIsLoading(true)
     const notesArray = sectionArray.map((note, index) => (
       <NoteCard
         key={index}
@@ -56,32 +59,47 @@ const HomePage = () => {
       />
     ));
     setNoteCards(notesArray);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
   }, []);
 
   return (
     <main>
-      <div className="headerContainer">
-        <div className="aboutBar">
-          <h1 className="helloTitle">Hi, I'm Ray Valenzuela</h1>
-          <h3 className="myDescription">
-            Computer Engineer - Web Developer - Cal Poly
-          </h3>
-          <p className="welcome">Welcome To My Website</p>
-          <p className="introPara">
-            Here, you'll find information about my professional and personal
-            life
-          </p>
+      {isLoading ? (
+        <div className="spinContainer">
+          <LoadingSpinner></LoadingSpinner>
         </div>
-      </div>
-      <Modal
-        title={sectionArray[index].title}
-        paragraph={sectionArray[index].paragraph}
-        isOpen={modal}
-        onClose={closeModal}
-        className={modal}
-      ></Modal>
-      <div className="noteCardContainer">{notecards}</div>
-      
+        
+      ) : (
+        <div>
+          <div className="headerContainer">
+            <div className="outerAbout">
+              <img src="me.jpg" alt="A picture of Ray" className="ray" />
+              <div className="aboutBar">
+                <h1 className="helloTitle">Hi, I'm Ray Valenzuela</h1>
+                <h3 className="myDescription">
+                  Computer Engineer - Web Developer - Cal Poly
+                </h3>
+                <p className="welcome">Welcome To My Website</p>
+                <p className="introPara">
+                  Here, you'll find information about my professional and
+                  personal life
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="noteCardContainer">{notecards}</div>
+          <Modal
+            title={sectionArray[index].title}
+            paragraph={sectionArray[index].paragraph}
+            isOpen={modal}
+            onClose={closeModal}
+            className={modal}
+          ></Modal>
+        </div>
+      )}
     </main>
   );
 };

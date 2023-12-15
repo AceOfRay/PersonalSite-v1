@@ -1,4 +1,4 @@
-import "./nav.css";
+import "../css/nav.css";
 
 export default function Navbar( {setPage} ) {
     

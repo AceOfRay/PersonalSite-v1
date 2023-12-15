@@ -6,3 +6,12 @@
 .para {
     text-align: center;
 }
+.container {
+    width:40vh;
+    height: 25vh;
+    transition: transform 0.5s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.25);
+}

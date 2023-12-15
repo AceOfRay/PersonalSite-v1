@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../scripts/firebaseAppInit";
 import { query, collection, getDocs, orderBy } from "firebase/firestore";
 import ProjectBlock from "../components/projectBlock";
+import LoadingSpinner from "../components/loadingSpinner";
 import "../css/projectPage.css";
 
 export default function ProjectPage() {
@@ -9,9 +10,11 @@ export default function ProjectPage() {
   const [hardware, setHardware] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [software, setSoftware] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       //db queries
       const hardwareDocs = await getDocs(
         query(collection(db, "Hardware"), orderBy("Order"))
@@ -68,24 +71,37 @@ export default function ProjectPage() {
       });
 
       setSoftware(softwareArray);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 200);
     };
     fetchData();
   }, []);
 
   return (
-    <main className="mainContainer">
-      <div className="softwareSection">
-        <h1>Software</h1>
-        <div className="softwareContainer">{software}</div>
-      </div>
-      <div className="clubSection">
-        <h1>Clubs</h1>
-        <div className="clubContainer">{clubs}</div>
-      </div>
-      <div className="hardwareSection">
-        <h1>Hardware</h1>
-        <div className="hardwareContainer">{hardware}</div>
-      </div>
+    <main>
+      {isLoading ? (
+        <div className="spinContainer">
+          <LoadingSpinner></LoadingSpinner>
+        </div>
+        
+      ) : (
+        <div className="mainContainer">
+          <h1 className="sectionTitle">Software Activities</h1>
+          <div className="softwareSection">
+            <div className="softwareContainer">{software}</div>
+          </div>
+          <div className="clubSection">
+            <h1 className="sectionTitle">Club Involvements</h1>
+            <div className="clubContainer">{clubs}</div>
+          </div>
+          <div className="hardwareSection">
+            <h1 className="sectionTitle">Hardware Activities</h1>
+            <div className="hardwareContainer">{hardware}</div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
