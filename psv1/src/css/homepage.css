@@ -1,6 +1,7 @@
 
 
 .headerContainer {
+  margin:5vw;
     display: flex;
     justify-content:center;
   }

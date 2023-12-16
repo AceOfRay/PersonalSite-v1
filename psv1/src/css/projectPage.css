@@ -9,7 +9,7 @@
 .softwareContainer, .clubContainer, .hardwareContainer {
     display:flex;
     flex-wrap: wrap;
-    width:80%;
+    width:100%;
     justify-content: space-around;
 }
 
@@ -30,7 +30,6 @@
     margin:1vw 2.5vw;
     padding:1vh 2.5vw;
     border:2px solid white;
-
 }
 
 .softwareSection, .clubSection, .hardwareSection {
@@ -44,7 +43,7 @@
 
 .sectionTitle {
     padding:.5vh;
-    margin: 1.5vh;
+    margin: 2.5vh;
     font-size:5vh;
     border-bottom:2px solid white;
     transition: transform 0.5s ease-in-out;
