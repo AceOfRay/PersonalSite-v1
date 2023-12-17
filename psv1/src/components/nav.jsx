@@ -7,8 +7,10 @@ export default function Navbar( {setPage} ) {
             <ul className="list">
                 <li className="listObject" onClick={() => {setPage('Home')}}>Home</li>
                 <li className="listObject" onClick={() => {setPage('Projects')}}>Projects</li>
-                <li className="listObject" onClick={() => {setPage('Contacts')}}>Contact</li>
+                <li className="listObject" onClick={() => {setPage('Contacts')}}>Contact</li>                
             </ul>
         </nav>
     )
 }
+
+//<li className="listObject" onClick={() => {setPage('Skills')}}>Skills</li>

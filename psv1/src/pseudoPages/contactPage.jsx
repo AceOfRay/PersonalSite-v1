@@ -8,7 +8,7 @@ export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [validity, setValidity] = useState(null);
+  const [validity, setValidity] = useState(true);
   const [sentMessage, setSentMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -61,6 +61,7 @@ export default function ContactPage() {
                 name="name"
                 className="formInput"
                 placeholder="Your Name"
+                autoComplete="off"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -70,6 +71,7 @@ export default function ContactPage() {
                 name="email"
                 className="formInput"
                 placeholder="Your Email"
+                autoComplete="off"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -79,6 +81,7 @@ export default function ContactPage() {
                 name="message"
                 className="formInput"
                 placeholder="Your Message"
+                autoComplete="off"
                 onChange={(e) => {
                   setMessage(e.target.value);
                 }}

@@ -9,7 +9,8 @@
     transform: translateY(0);
     transition: transform 1s ease;
     max-height:21vh;
-    margin:3vh;
+    max-width:28vh;
+    margin:1vh;
     text-overflow:ellipsis;
     backdrop-filter: blur(5px);
 }
