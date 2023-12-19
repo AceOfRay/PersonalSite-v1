@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-      <Navbar setPage={setPage}></Navbar>
+      <Navbar className='navbar' setPage={setPage}></Navbar>
       <MainPage page={page} />
     </div>
   );

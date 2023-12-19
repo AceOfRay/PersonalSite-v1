@@ -26,3 +26,9 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media screen and (max-width:450px) {
+  .modalContent {
+    max-width:80%;
+  }
+}

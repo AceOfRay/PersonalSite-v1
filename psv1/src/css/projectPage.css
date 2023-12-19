@@ -60,3 +60,21 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width:450px){
+    .sectionTitle {
+        font-size:6vw;
+    }
+
+    .softwareContainer,.clubContainer, .hardwareContainer {
+        max-width:80%;
+    }
+
+    .softwareContainer>*,.clubContainer>*, .hardwareContainer > * {
+        margin:2vh;
+    }
+
+    .softwareSection, .clubSection, .hardwareSection {
+        margin-bottom:2vh;
+    }
+}
