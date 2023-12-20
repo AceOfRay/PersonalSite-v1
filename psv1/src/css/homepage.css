@@ -28,8 +28,8 @@
 .main {
   height: auto;
   display: flex;
-  flex-direction: column; /* Default is 'column', change to 'row' */
-  justify-content: flex-start; /* Align items to the start (left) */
+  flex-direction: column; 
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
@@ -54,12 +54,7 @@
   padding: 5vh 5vh;
 }
 
-.spinContainer {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 @media screen and (max-width: 450px) {
   .outerAbout {

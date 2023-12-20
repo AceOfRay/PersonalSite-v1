@@ -20,10 +20,11 @@
 .nav {
   display: flex;
   justify-content: center;
-  margin: 0 1vw;
   position: fixed;
+  margin:0;
   top: 0;
-  right: 1.2vw;
+  width:100%;
+  background-color: black;
 }
 
 @media screen and (max-width: 450px) {
