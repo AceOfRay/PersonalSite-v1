@@ -1,5 +1,6 @@
 .headerContainer {
   margin: 5vw;
+  margin-top: 10vw;
   display: flex;
   justify-content: center;
 }
@@ -67,5 +68,7 @@
   .aboutBar > * {
     text-align: center;
   }
-
+  .helloTitle {
+    padding-top: 4vh;
+  }
 }
