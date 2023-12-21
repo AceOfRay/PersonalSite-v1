@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../css/contactPage.css";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../scripts/firebaseAppInit";
 import LoadingSpinner from "../components/loadingSpinner";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ export default function ContactPage() {
   const [validity, setValidity] = useState(true);
   const [sentMessage, setSentMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const contactForm = useRef();
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,12 +34,27 @@ export default function ContactPage() {
         received: new Date(Date.now()),
       };
       await addDoc(messageCollection, data);
+      notifyMe();
       setSentMessage(true);
     }
   };
 
   const handleInvalidInputs = () => {
     setValidity(false);
+  };
+
+  const notifyMe = () => {
+    const template = "template_4gb3bsp";
+    const service = "AceOfRay";
+
+    emailjs
+      .sendForm(service, template, contactForm.current, "SXlTSGImhk7zX9YIq")
+      .then(() => {
+        console.log("Message Sent");
+      })
+      .catch((error) => {
+        console.log("Message Failed", error);
+      });
   };
 
   return (
@@ -54,11 +71,11 @@ export default function ContactPage() {
               <p>I will get back to you with an email soon</p>
             </div>
           ) : (
-            <form className="contactForm">
+            <form ref={contactForm} className="contactForm">
               <h1 className="contactFormTitle">Let's Talk</h1>
               <input
                 type="text"
-                name="name"
+                name="senderName"
                 className="formInput"
                 placeholder="Your Name"
                 autoComplete="off"
@@ -68,7 +85,7 @@ export default function ContactPage() {
               />
               <input
                 type="email"
-                name="email"
+                name="senderEmail"
                 className="formInput"
                 placeholder="Your Email"
                 autoComplete="off"
@@ -88,8 +105,11 @@ export default function ContactPage() {
               />
               <button
                 className="sendButton"
-                type="button"
-                onClick={sendMessage}
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  sendMessage();
+                }}
               >
                 Send Message
               </button>
