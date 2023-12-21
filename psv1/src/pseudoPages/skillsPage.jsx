@@ -8,6 +8,8 @@ import LoadingSpinner from "../components/loadingSpinner";
 export default function SkillsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState([]);
+  const [devTechs, setDevTechs] = useState([]);
+  const [api, setAPI] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,18 +17,44 @@ export default function SkillsPage() {
       const docs = await getDocs(
         query(collection(db, "Skills"), orderBy("Order"))
       );
-      const languageArray = [];
+
       docs.forEach((doc) => {
         const data = doc.data();
-        languageArray.push(
-          <ProjectBlock
-            key={doc.id}
-            title={data.title}
-            paragraph={data.paragraph}
-          />
-        );
+        switch (doc.id) {
+          case "Languages":
+            setLanguage([
+              <ProjectBlock
+                key={doc.id}
+                title={data.title}
+                paragraph={data.paragraph}
+              />,
+            ]);
+            break;
+          case "Dev Techs":
+            setDevTechs([
+              <ProjectBlock
+                key={doc.id}
+                title={data.title}
+                paragraph={data.paragraph}
+              />,
+            ]);
+            break;
+          case "APIUsage":
+            setAPI([
+              <ProjectBlock
+                key={doc.id}
+                title={data.title}
+                paragraph={data.paragraph}
+              />,
+            ]);
+            break;
+          default: {
+            setDevTechs([null]);
+            setLanguage([null]);
+            setAPI([null]);
+          }
+        }
       });
-      setLanguage(languageArray);
 
       setTimeout(() => {
         setIsLoading(false);
@@ -36,17 +64,15 @@ export default function SkillsPage() {
   }, []);
 
   return (
-    <main className="styleContainer">
+    <main>
       {isLoading ? (
         <div className="spinContainer">
           <LoadingSpinner />
         </div>
-        
       ) : (
         <div className="styleContainer">
           <h1 className="skillsTitle">
-            Skills I Have Developed In My 2 Years of
-            Programming
+            Skills I Have Developed In My 2 Years of Programming
           </h1>
           <div className="skillSection" id="languageSection">
             <h2 className="skillTitle" id="languageTitle">
@@ -85,7 +111,93 @@ export default function SkillsPage() {
                 </a>
               </li>
             </ul>
-            <div className="softwareContainer">{language}</div>
+            <div className="languageContainer">{language}</div>
+          </div>
+
+          <div className="skillSection" id="techStack">
+            <h2 className="skillTitle">Developer Technologies Used</h2>
+            <ul className="skillList">
+              <li>
+                <a href="https://reactjs.org/">ReactJS</a>
+              </li>
+              <li>
+                <a href="https://firebase.google.com/">Firebase</a>
+              </li>
+              <li>
+                <a href="https://nextjs.org/">NextJS</a>
+              </li>
+              <li>
+                <a href="https://www.mongodb.com/">MongoDB</a>
+              </li>
+              <li>
+                <a href="https://expressjs.com/">ExpressJS</a>
+              </li>
+              <li>
+                <a href="https://cloud.google.com/apis">Google Cloud API's</a>
+              </li>
+            </ul>
+            <ul className="skillList">
+              <li>
+                <a href="https://console.cloud.google.com/">
+                  Google Cloud Console
+                </a>
+              </li>
+              <li>
+                <a href="https://www.mysql.com/">MySQL</a>
+              </li>
+              <li>
+                <a href="https://www.arduino.cc/">Arduino</a>
+              </li>
+              <li>
+                <a href="https://platformio.org/">PlatformIO</a>
+              </li>
+              <li>
+                <a href="https://www.xilinx.com/products/design-tools/vivado.html">
+                  Xilinx Vivado
+                </a>
+              </li>
+              <li>
+                <a href="https://svelte.dev/">Svelte</a>
+              </li>
+            </ul>
+            <div className="languageContainer">{devTechs}</div>
+          </div>
+
+          <h1 className="skillsTitle">API Use</h1>
+          <div className="skillSection" id="APIsection">
+            <ul className="skillList" id="APIList">
+              <li>
+                <a href="https://cloud.google.com/vision/?hl=en">
+                  Google Cloud Vision
+                </a>
+              </li>
+              <li>
+                <a href="https://stripe.com/docs">Stripe For Developers</a>
+              </li>
+              <li>
+                <a href="https://firebase.google.com/">Firebase</a>
+              </li>
+              <li>
+                <a href="https://developers.google.com/custom-search/">
+                  Google Search
+                </a>
+              </li>
+            </ul>
+
+            <ul className="skillList">
+              <li>
+                <a href="https://scraptik.com/">ScrapTik</a>
+              </li>
+              <li>
+                <a href="https://developers.tiktok.com/">Tik Tok</a>
+              </li>
+              <li>
+                <a href="https://developers.facebook.com/docs/instagram-api/">
+                  Instagram Graph
+                </a>
+              </li>
+            </ul>
+            <div className="languageContainer">{api}</div>
           </div>
         </div>
       )}

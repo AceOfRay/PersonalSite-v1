@@ -11,14 +11,14 @@ export default function Socials() {
         </li>
         <li>
           <a href="https://github.com/AceOfRay">
-            <img className="github" src="githubLogo.png" alt="GitHub Link" />
+            <img className="github" src="githubLogo.jpg" alt="GitHub Link" />
           </a>
         </li>
         <li>
           <a href="https://www.linkedin.com/in/ramon-valenzuela-ab1511253/">
             <img
               className="linkedin"
-              src="LinkedInLogo.png"
+              src="LinkedInLogo.jpg"
               alt="Linked In Link"
             />
           </a>

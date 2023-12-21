@@ -5,8 +5,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   background-color: black;
+  z-index:100;
 }
 
 .list {
@@ -27,6 +28,15 @@
   width: 4.5vw;
   height: 4.5vw;
   padding:.5vw;
+}
+
+.github {
+  border-radius:4vw;
+  background-color: white;
+}
+
+.linkedin {
+  border-radius: 2vw;
 }
 
 .insta {
