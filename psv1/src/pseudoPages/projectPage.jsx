@@ -72,9 +72,7 @@ export default function ProjectPage() {
 
       setSoftware(softwareArray);
 
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 200);
+      setIsLoading(false);
     };
     fetchData();
   }, []);

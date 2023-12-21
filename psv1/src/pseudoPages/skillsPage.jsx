@@ -172,7 +172,7 @@ export default function SkillsPage() {
                 </a>
               </li>
               <li>
-                <a href="https://stripe.com/docs">Stripe For Developers</a>
+                <a href="https://stripe.com/docs">Stripe</a>
               </li>
               <li>
                 <a href="https://firebase.google.com/">Firebase</a>

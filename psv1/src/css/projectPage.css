@@ -17,20 +17,20 @@
 .softwareContainer > * {
     margin:1vw 5vw;
     padding:1vh 2.5vw;
-    border:2px solid white;
+    border:1px solid white;
 }
 
 .clubContainer > * {
     margin:1vw 2.5vw;
     padding:1vh 2.5vw;
-    border:2px solid white;
+    border:1px solid white;
 
 }
 
 .hardwareContainer > * {
     margin:1vw 2.5vw;
     padding:1vh 2.5vw;
-    border:2px solid white;
+    border:1px solid white;
 }
 
 .softwareSection, .clubSection, .hardwareSection {
